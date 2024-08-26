@@ -1,0 +1,62 @@
+﻿@model HomeModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Projeto Microondas</h1>
+    <p>
+        Projeto de criação de um Microondas digital utilizando Aplicativo Web ASP.NET Core 5.0.
+    </p>
+</div>
+
+<br />
+
+<form id="microondasForm">
+    <div class="mb-3">
+        <label for="Tipo">Potência</label>
+        <input type="number"
+               asp-for="Potencia"
+               class="form-control"
+               id="inputPotencia"
+               aria-describedby="potenciaHelp">
+        <div id="potenciaHelp" class="form-text">Informe um valor entre 1 e 10.</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Tipo">Tempo</label>
+        <input type="time"
+               asp-for="Tempo"
+               class="form-control"
+               id="inputTempo"
+               aria-describedby="tempoHelp"
+               placeholder="00:00"
+               min="00:01"
+               max="02:00">
+        <div id="tempoHelp" class="form-text">Informe um valor entre 00:01 e 02:00.</div>
+        <div id="msg" class="form-text"></div>
+    </div>
+
+    <button type="button" id="btnIniciar" class="btn btn-outline-primary" onclick="iniciarCronometro()">Iniciar</button>
+    <button type="button" id="btnPausarParar" class="btn btn-outline-secondary" onclick="pausarOuPararCronometro()">Pausar</button>
+    <button type="button" id="btnReiniciar" class="btn btn-outline-danger" onclick="reiniciarCronometro()">Reiniciar</button>
+</form>
+
+<div id="resultado" class="mt-4">
+    <!-- Os valores serão exibidos aqui -->
+</div>
+
+<div id="cronometro" class="mt-4">
+    <!-- Cronômetro -->
+</div>
+
+<div id="visualizacaoTempo" class="mt-4">
+    <!-- Tempo decorrido -->
+</div>
+
+<style>
+    #visualizacaoTempo {
+        font-size: 24px;
+        white-space: pre;
+    }
+</style>
